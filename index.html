@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elevate with RAE | Virtual Partner, Operations & Multi-Role Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --sky-50: #f0f9ff;
+      --sky-100: #e0f2fe;
+      --sky-200: #bae6fd;
+      --sky-300: #7dd3fc;
+      --sky-400: #38bdf8;
+      --sky-500: #0ea5e9;
+      --pink-50: #fdf2f8;
+      --pink-100: #fce7f3;
+      --pink-200: #fbcfe8;
+      --pink-300: #f9a8d4;
+      --pink-400: #f472b6;
+      --pink-500: #ec4899;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-glass: rgba(255, 255, 255, 0.82);
+      --border: rgba(226, 232, 240, 0.9);
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --shadow-sm: 0 4px 12px rgba(14, 165, 233, 0.06);
+      --shadow-md: 0 12px 28px rgba(236, 72, 153, 0.08);
+      --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.08);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #090d16;
+      --surface: #111827;
+      --surface-glass: rgba(17, 24, 39, 0.85);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Ambient soft gradient blobs */
+    .blob-1, .blob-2 {
+      position: fixed;
+      width: 550px;
+      height: 550px;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: -1;
+      opacity: 0.38;
+      pointer-events: none;
+    }
+
+    .blob-1 {
+      top: -100px;
+      left: -120px;
+      background: radial-gradient(circle, var(--sky-300), var(--sky-200));
+    }
+
+    .blob-2 {
+      top: 30%;
+      right: -150px;
+      background: radial-gradient(circle, var(--pink-300), var(--pink-200));
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(16px);
+      background: var(--surface-glass);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--sky-400), var(--pink-400));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+      box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35);
+      position: relative;
+    }
+
+    .brand-mark::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      pointer-events: none;
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.25rem;
+      background: linear-gradient(120deg, var(--sky-500), var(--pink-500));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      display: block;
+      margin-top: -2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--sky-500);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .theme-toggle {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--pink-400);
+      transform: rotate(15deg);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--sky-400), var(--pink-400));
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px rgba(244, 114, 182, 0.3);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(244, 114, 182, 0.45);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--sky-400);
+      color: var(--sky-500);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 90px 0 60px;
+      text-align: center;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--sky-50), var(--pink-50));
+      border: 1px solid var(--sky-200);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--sky-500);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    [data-theme="dark"] .badge-pill {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: rgba(56, 189, 248, 0.25);
+    }
+
+    .badge-pill i {
+      color: var(--pink-500);
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--sky-500) 0%, var(--pink-500) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    /* Core Metrics Banner */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      background: var(--surface-glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+      margin-top: 20px;
+    }
+
+    .metric-item {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--sky-500);
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+
+    .metric-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Section Global Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-tag {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: var(--pink-500);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* Roles Interactive Hub */
+    .roles-section {
+      padding: 70px 0;
+    }
+
+    .roles-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .role-btn {
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .role-btn:hover {
+      border-color: var(--sky-300);
+      color: var(--sky-500);
+    }
+
+    .role-btn.active {
+      background: linear-gradient(135deg, var(--sky-400), var(--pink-400));
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.35);
+    }
+
+    .role-card-display {
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .role-card-display::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--sky-400), var(--pink-400));
+    }
+
+    .role-content-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .role-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .role-badge {
+      background: var(--sky-100);
+      color: var(--sky-500);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    [data-theme="dark"] .role-badge {
+      background: rgba(56, 189, 248, 0.15);
+    }
+
+    .role-summary {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .role-feature-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: var(--transition);
+    }
+
+    .role-feature-item:hover {
+      border-color: var(--pink-300);
+      transform: translateY(-2px);
+    }
+
+    .role-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--sky-100), var(--pink-100));
+      color: var(--sky-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    [data-theme="dark"] .role-icon {
+      background: rgba(244, 114, 182, 0.15);
+      color: var(--pink-300);
+    }
+
+    .role-feature-title {
+      font-weight: 700;
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+
+    .role-feature-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Anonymous Experience Sneak Peek */
+    .experience-section {
+      padding: 70px 0;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .timeline-card:hover {
+      border-color: var(--sky-300);
+      transform: translateX(4px);
+    }
+
+    .timeline-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .timeline-role {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .timeline-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--pink-500);
+      background: var(--pink-50);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    [data-theme="dark"] .timeline-tag {
+      background: rgba(236, 72, 153, 0.15);
+    }
+
+    .timeline-domain {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--sky-500);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .timeline-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .timeline-points li {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .timeline-points li i {
+      color: var(--sky-400);
+      font-size: 0.85rem;
+      margin-top: 5px;
+    }
+
+    /* Tools Ecosystem */
+    .tools-section {
+      padding: 70px 0;
+    }
+
+    .tools-wrapper {
+      background: var(--surface-glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .tools-pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .tool-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .tool-badge:hover {
+      border-color: var(--sky-400);
+      color: var(--sky-500);
+      transform: translateY(-2px);
+    }
+
+    .tool-badge i {
+      color: var(--pink-400);
+    }
+
+    .quick-learn-box {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(244, 114, 182, 0.1));
+      border: 1px dashed var(--sky-400);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .quick-learn-box h4 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .quick-learn-box p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Philosophy / Quote Banner */
+    .philosophy-section {
+      padding: 40px 0 70px;
+    }
+
+    .quote-box {
+      background: linear-gradient(135deg, var(--surface-glass), var(--surface));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .quote-icon {
+      font-size: 2.2rem;
+      color: var(--pink-300);
+      margin-bottom: 18px;
+    }
+
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text);
+      max-width: 850px;
+      margin: 0 auto 20px;
+      font-style: italic;
+    }
+
+    .quote-author {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--sky-500);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* Hiring Packages Section */
+    .packages-section {
+      padding: 70px 0;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pricing-card.featured {
+      border: 2px solid var(--sky-400);
+      background: var(--surface);
+      box-shadow: 0 16px 36px rgba(56, 189, 248, 0.15);
+    }
+
+    .popular-tag {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--sky-400), var(--pink-400));
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 5px 16px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .package-name {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .package-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      min-height: 40px;
+    }
+
+    .package-price-wrap {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .package-price {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -1px;
+    }
+
+    .package-currency {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--sky-500);
+    }
+
+    .package-hours {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      display: block;
+      margin-top: 4px;
+    }
+
+    .package-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .package-features li {
+      font-size: 0.9rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .package-features li i {
+      color: var(--sky-400);
+      font-size: 0.95rem;
+    }
+
+    .pricing-card.featured .package-features li i {
+      color: var(--pink-500);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 70px 0 90px;
+    }
+
+    .contact-box {
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .contact-channel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-channel:hover {
+      border-color: var(--pink-400);
+      transform: translateY(-3px);
+      color: var(--sky-500);
+    }
+
+    .channel-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--sky-100), var(--pink-100));
+      color: var(--sky-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    [data-theme="dark"] .channel-icon {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--sky-300);
+    }
+
+    .channel-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: block;
+    }
+
+    .channel-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      word-break: break-all;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 30px 0;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--surface);
+      border: 1px solid var(--sky-300);
+      color: var(--text);
+      padding: 12px 20px;
+      border-radius: 30px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast i {
+      color: var(--pink-500);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .contact-box {
+        padding: 28px;
+      }
+      .role-card-display {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob-1"></div>
+  <div class="blob-2"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="logo-container">
+        <div class="brand-mark">RAE</div>
+        <div>
+          <span class="brand-title">Elevate with RAE</span>
+          <span class="brand-subtitle">Virtual Solutions Partner</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#roles">What I Do</a></li>
+        <li><a href="#experience">Track Record</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="#contact" class="btn-primary">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="badge-pill">
+        <i class="fa-solid fa-sparkles"></i>
+        <span>Available for Remote Opportunities & Contracts</span>
+      </div>
+      <h1 class="hero-title">
+        The versatile virtual partner who helps <span class="gradient-text">scale your business</span> with speed and precision.
+      </h1>
+      <p class="hero-subtitle">
+        8+ years supporting founders, agencies, e-commerce stores, healthcare practices, and coaches. Ready to handle everything from executive admin and Kajabi web design to frontline reception, social media, and retention.
+      </p>
+      <div class="hero-cta">
+        <a href="#packages" class="btn-primary">
+          <i class="fa-solid fa-briefcase"></i> View Service Packages
+        </a>
+        <a href="https://canva.link/elevatewithme" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Canva Portfolio
+        </a>
+        <a href="https://guide-s.my.canva.site/ritchelcv" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <i class="fa-solid fa-file-lines"></i> Interactive CV
+        </a>
+      </div>
+
+      <!-- Core Metrics -->
+      <div class="metrics-bar">
+        <div class="metric-item">
+          <div class="metric-value">8+</div>
+          <div class="metric-label">Years Remote Experience</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value">7+</div>
+          <div class="metric-label">Versatile Business Roles</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value">&lt; 48h</div>
+          <div class="metric-label">Proprietary Tool Mastery</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-value">100%</div>
+          <div class="metric-label">Dedication & Confidentiality</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roles I Can Fulfill -->
+  <section class="roles-section" id="roles">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Versatile Roles</span>
+        <h2 class="section-title">One Reliable Partner, Multiple Capabilities</h2>
+        <p class="section-desc">You are not confined to hiring single-task assistants. Pick the role or blend multiple functions to match your operational workflow.</p>
+      </div>
+
+      <div class="roles-nav" id="roleTabs">
+        <button class="role-btn active" data-role="receptionist"><i class="fa-solid fa-headset"></i> Virtual Receptionist</button>
+        <button class="role-btn" data-role="admin"><i class="fa-solid fa-clipboard-check"></i> General Administrative</button>
+        <button class="role-btn" data-role="executive"><i class="fa-solid fa-user-tie"></i> Executive Assistant</button>
+        <button class="role-btn" data-role="webdesign"><i class="fa-solid fa-laptop-code"></i> Web & Kajabi Designer</button>
+        <button class="role-btn" data-role="smm"><i class="fa-solid fa-hashtag"></i> Social Media & Content</button>
+        <button class="role-btn" data-role="realestate"><i class="fa-solid fa-building"></i> Real Estate Support</button>
+        <button class="role-btn" data-role="sales"><i class="fa-solid fa-chart-line"></i> Sales & Retention</button>
+      </div>
+
+      <div class="role-card-display" id="roleDisplay">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Sneak Peek Experience (Anonymous) -->
+  <section class="experience-section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Track Record</span>
+        <h2 class="section-title">Sneak Peek of Past Experience</h2>
+        <p class="section-desc">Real, proven operational outcomes delivered across international businesses without disclosing proprietary company names.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <h3 class="timeline-role">Client Relations, Retention & Sales Support Specialist</h3>
+            <span class="timeline-tag">Healthcare & Medical Practice</span>
+          </div>
+          <span class="timeline-domain">US Medical Clinics, Wellness Centers & Med Spas</span>
+          <ul class="timeline-points">
+            <li><i class="fa-solid fa-circle-check"></i> Conducted outbound retention and follow-up campaigns for inactive and newly onboarded clinic accounts.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Coordinated directly with clinic owners and physicians regarding order status, pricing objections, and product inquiries.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Handled 15 to 30 outbound touchpoints daily while keeping CRM records and sales handoffs precise.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <h3 class="timeline-role">Customer Experience & E-commerce Operations Specialist</h3>
+            <span class="timeline-tag">Omnichannel E-commerce</span>
+          </div>
+          <span class="timeline-domain">Shopify, Amazon Marketplace & Faire Wholesale</span>
+          <ul class="timeline-points">
+            <li><i class="fa-solid fa-circle-check"></i> Managed end-to-end customer support across Shopify, Amazon, and Faire wholesale portals.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Utilized NetSuite ERP to verify order logs, shipments, inventory records, and track replacements.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Published educational blog posts and optimized product listings for conversion and discoverability.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <h3 class="timeline-role">Executive Assistant & Digital Operations Partner</h3>
+            <span class="timeline-tag">Coaching & Digital Education</span>
+          </div>
+          <span class="timeline-domain">Founders, Authors, Masterminds & Podcasters</span>
+          <ul class="timeline-points">
+            <li><i class="fa-solid fa-circle-check"></i> Built and launched digital courses, landing pages, and email funnels using Kajabi, Systeme.io, and WordPress.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Repurposed long-form video podcasts into high-engagement short-form reels, carousels, and YouTube clips.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Formatted and published Amazon KDP paperback books and managed client onboarding workflows.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <h3 class="timeline-role">Technical Support, Customer Care & Sales Representative</h3>
+            <span class="timeline-tag">Enterprise Customer Operations</span>
+          </div>
+          <span class="timeline-domain">BPO / Global Support Infrastructure</span>
+          <ul class="timeline-points">
+            <li><i class="fa-solid fa-circle-check"></i> Provided phone, live chat, and ticket resolution for technical inquiries, accounts, and service recovery.</li>
+            <li><i class="fa-solid fa-circle-check"></i> Formulated solution-based upselling, product recommendations, and detailed case documentation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools & Quick-Learn Guarantee -->
+  <section class="tools-section" id="tools">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Tech Stack</span>
+        <h2 class="section-title">Tools I Use & Rapid Adaptability</h2>
+        <p class="section-desc">Comfortable working across modern tech stacks and equipped with a proven ability to master new systems quickly.</p>
+      </div>
+
+      <div class="tools-wrapper">
+        <div class="tools-pill-grid">
+          <span class="tool-badge"><i class="fa-solid fa-cube"></i> NetSuite</span>
+          <span class="tool-badge"><i class="fa-brands fa-shopify"></i> Shopify</span>
+          <span class="tool-badge"><i class="fa-brands fa-amazon"></i> Amazon Seller Central</span>
+          <span class="tool-badge"><i class="fa-solid fa-shop"></i> Faire Wholesale</span>
+          <span class="tool-badge"><i class="fa-solid fa-graduation-cap"></i> Kajabi</span>
+          <span class="tool-badge"><i class="fa-brands fa-wordpress"></i> WordPress</span>
+          <span class="tool-badge"><i class="fa-solid fa-diagram-project"></i> Systeme.io</span>
+          <span class="tool-badge"><i class="fa-solid fa-palette"></i> Canva Pro</span>
+          <span class="tool-badge"><i class="fa-solid fa-video"></i> CapCut & Clipchamp</span>
+          <span class="tool-badge"><i class="fa-brands fa-google"></i> Google Workspace</span>
+          <span class="tool-badge"><i class="fa-solid fa-calculator"></i> QuickBooks</span>
+          <span class="tool-badge"><i class="fa-solid fa-headset"></i> Help Scout</span>
+          <span class="tool-badge"><i class="fa-brands fa-slack"></i> Slack & Trello</span>
+          <span class="tool-badge"><i class="fa-solid fa-book-open"></i> Amazon KDP</span>
+        </div>
+
+        <div class="quick-learn-box">
+          <h4><i class="fa-solid fa-bolt" style="color: var(--pink-500); margin-right: 6px;"></i> The Rapid Tool Adoption Guarantee</h4>
+          <p>Don't see your specific platform or proprietary CRM on this list? I specialize in quick onboarding and have repeatedly mastered new business applications within 24 to 48 hours without disrupting existing workflows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote & Philosophy -->
+  <section class="philosophy-section">
+    <div class="container">
+      <div class="quote-box">
+        <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+        <p class="quote-text">
+          "Your vision is unique, and your ideas deserve to shine. My mission is to take the operational burden off your shoulders—giving you back the clarity and time to focus on growth."
+        </p>
+        <span class="quote-author">Elevate with RAE &bull; Core Philosophy</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reasonable Packages ($500 - $1,200) -->
+  <section class="packages-section" id="packages">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Investment</span>
+        <h2 class="section-title">Transparent, Flexible Packages</h2>
+        <p class="section-desc">Tiered pricing calibrated for growing founders, agencies, and businesses looking for dependable, high-caliber support.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Starter Package -->
+        <div class="pricing-card">
+          <div>
+            <h3 class="package-name">Starter Partner</h3>
+            <p class="package-subtitle">Ideal for solopreneurs needing routine admin, email triage, and core calendar support.</p>
+            <div class="package-price-wrap">
+              <span class="package-currency">USD / UK equivalent</span>
+              <div class="package-price">$500 <span style="font-size: 1rem; font-weight: 500; color: var(--text-muted);">/ month</span></div>
+              <span class="package-hours">~15 Hours per week</span>
+            </div>
+            <ul class="package-features">
+              <li><i class="fa-solid fa-check"></i> Inbox & calendar scheduling</li>
+              <li><i class="fa-solid fa-check"></i> Basic customer ticket resolution</li>
+              <li><i class="fa-solid fa-check"></i> Document & spreadsheet updates</li>
+              <li><i class="fa-solid fa-check"></i> Social media scheduling</li>
+              <li><i class="fa-solid fa-check"></i> Weekly task reporting</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn-secondary" style="justify-content: center; width: 100%;">Choose Starter</a>
+        </div>
+
+        <!-- Growth Package (Featured) -->
+        <div class="pricing-card featured">
+          <div class="popular-tag">Most Popular</div>
+          <div>
+            <h3 class="package-name">Growth Accelerator</h3>
+            <p class="package-subtitle">Perfect for growing businesses requiring multi-role support, web tweaks, and active outreach.</p>
+            <div class="package-price-wrap">
+              <span class="package-currency">USD / UK equivalent</span>
+              <div class="package-price">$800 <span style="font-size: 1rem; font-weight: 500; color: var(--text-muted);">/ month</span></div>
+              <span class="package-hours">~25 Hours per week</span>
+            </div>
+            <ul class="package-features">
+              <li><i class="fa-solid fa-check"></i> Everything in Starter tier</li>
+              <li><i class="fa-solid fa-check"></i> Kajabi, WordPress or funnel updates</li>
+              <li><i class="fa-solid fa-check"></i> Outbound client follow-ups & retention</li>
+              <li><i class="fa-solid fa-check"></i> Video repurposing (Reels/Shorts)</li>
+              <li><i class="fa-solid fa-check"></i> Priority communication via Slack</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn-primary" style="justify-content: center; width: 100%;">Select Growth</a>
+        </div>
+
+        <!-- Full Executive Package -->
+        <div class="pricing-card">
+          <div>
+            <h3 class="package-name">Dedicated Operations</h3>
+            <p class="package-subtitle">Complete operational coverage for founders seeking a proactive, full-time virtual right hand.</p>
+            <div class="package-price-wrap">
+              <span class="package-currency">USD / UK equivalent</span>
+              <div class="package-price">$1,200 <span style="font-size: 1rem; font-weight: 500; color: var(--text-muted);">/ month</span></div>
+              <span class="package-hours">40 Hours per week (Full-Time)</span>
+            </div>
+            <ul class="package-features">
+              <li><i class="fa-solid fa-check"></i> Complete operational & admin management</li>
+              <li><i class="fa-solid fa-check"></i> Inbound reception & customer success</li>
+              <li><i class="fa-solid fa-check"></i> Full website & landing page design</li>
+              <li><i class="fa-solid fa-check"></i> E-commerce / marketplace supervision</li>
+              <li><i class="fa-solid fa-check"></i> Real estate & lead qualification support</li>
+              <li><i class="fa-solid fa-check"></i> Daily sync & dedicated focus</li>
+            </ul>
+          </div>
+          <a href="#contact" class="btn-secondary" style="justify-content: center; width: 100%;">Hire Dedicated</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Direct Channels -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div class="section-header" style="margin-bottom: 20px;">
+          <span class="section-tag">Direct Inquiries</span>
+          <h2 class="section-title">Ready to Elevate Your Business?</h2>
+          <p class="section-desc">Reach out directly via email, phone, or view my external profiles. I reply within 12 to 24 hours.</p>
+        </div>
+
+        <div class="contact-grid">
+          <a href="mailto:chelelevate@gmail.com" class="contact-channel" id="emailCopyBtn">
+            <div class="channel-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <span class="channel-title">Direct Email</span>
+              <span class="channel-desc">chelelevate@gmail.com</span>
+            </div>
+          </a>
+
+          <a href="tel:+6394541822128" class="contact-channel">
+            <div class="channel-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <span class="channel-title">Direct Phone / WhatsApp</span>
+              <span class="channel-desc">094541822128</span>
+            </div>
+          </a>
+
+          <a href="https://canva.link/elevatewithme" target="_blank" rel="noopener noreferrer" class="contact-channel">
+            <div class="channel-icon"><i class="fa-solid fa-palette"></i></div>
+            <div>
+              <span class="channel-title">Visual Portfolio</span>
+              <span class="channel-desc">canva.link/elevatewithme</span>
+            </div>
+          </a>
+
+          <a href="https://guide-s.my.canva.site/ritchelcv" target="_blank" rel="noopener noreferrer" class="contact-channel">
+            <div class="channel-icon"><i class="fa-solid fa-file-invoice"></i></div>
+            <div>
+              <span class="channel-title">Online Resume / CV</span>
+              <span class="channel-desc">guide-s.my.canva.site/ritchelcv</span>
+            </div>
+          </a>
+
+          <a href="https://v2.onlinejobs.ph/jobseekers/info/1789563" target="_blank" rel="noopener noreferrer" class="contact-channel">
+            <div class="channel-icon"><i class="fa-solid fa-id-badge"></i></div>
+            <div>
+              <span class="channel-title">OnlineJobs.ph Profile</span>
+              <span class="channel-desc">Verified Jobseeker #1789563</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Elevate with RAE. All rights reserved. Built with Sky Blue & Baby Pink aesthetics.</p>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">Email copied to clipboard!</span>
+  </div>
+
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('themeBtn');
+    const htmlEl = document.documentElement;
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = htmlEl.getAttribute('data-theme') === 'dark';
+      htmlEl.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      themeBtn.innerHTML = isDark 
+        ? '<i class="fa-solid fa-moon"></i>' 
+        : '<i class="fa-solid fa-sun" style="color: #f472b6;"></i>';
+    });
+
+    // Roles Data
+    const rolesData = {
+      receptionist: {
+        title: "Virtual Receptionist & Frontline Support",
+        badge: "Inbound & Outbound Communication",
+        summary: "Providing warm, articulate, and professional client triage across phones, live web chat, and scheduling inboxes.",
+        features: [
+          { title: "Call & Voicemail Management", desc: "Taking inbound inquiries, screening calls, documenting detailed messages, and routing leads to the right desk." },
+          { title: "Calendar & Appointment Setting", desc: "Coordinating consults and meetings using Calendly, Acuity, or Google Calendar without double bookings." },
+          { title: "Client Inquiry Triage", desc: "Answering recurring FAQs, sending intake forms, and ensuring clients feel welcomed immediately." },
+          { title: "Professional Phone Etiquette", desc: "Strong, friendly verbal communication grounded in years of international BPO training." }
+        ]
+      },
+      admin: {
+        title: "General Administrative Specialist",
+        badge: "Organizational Backbone",
+        summary: "Keeping back-office workflows clean, structured, and free of clutter so leaders can focus entirely on high-level strategy.",
+        features: [
+          { title: "Spreadsheets & Data Entry", desc: "Building structured trackers, pivot summaries, and clean records using Google Sheets and Excel." },
+          { title: "Document & SOP Creation", desc: "Drafting step-by-step guides, onboarding checklists, and standardized company operating procedures." },
+          { title: "Inbox Zero Management", desc: "Categorizing incoming emails, labeling priorities, drafting routine replies, and cleaning out spam." },
+          { title: "Online Business Research", desc: "Competitor research, software tool pricing comparisons, and data scraping for executive review." }
+        ]
+      },
+      executive: {
+        title: "Executive Virtual Assistant",
+        badge: "C-Suite & Founder Partnership",
+        summary: "Acting as the confidential right hand for entrepreneurs, agency heads, and coaches needing high-level coordination.",
+        features: [
+          { title: "High-Priority Schedule Guarding", desc: "Protecting executive focus time, organizing travel schedules, and preparing daily briefing notes." },
+          { title: "Cross-Functional Coordination", desc: "Following up with contractors, team members, and external partners to keep projects on deadline." },
+          { title: "Meeting Minutes & Action Items", desc: "Attending calls, taking actionable minutes, and distributing assignments to responsible stakeholders." },
+          { title: "Basic Bookkeeping Tasks", desc: "Generating client invoices, tracking expenses, and keeping invoice records organized via QuickBooks." }
+        ]
+      },
+      webdesign: {
+        title: "Website & Funnel Designer",
+        badge: "Kajabi, WordPress, GoDaddy & More",
+        summary: "Designing responsive, conversion-focused landing pages, membership portals, and digital course platforms.",
+        features: [
+          { title: "Kajabi Portal Setup", desc: "Building full coaching sites, video lecture modules, gated content tiers, and checkout funnels." },
+          { title: "WordPress, Wix & Squarespace", desc: "Theme customization, mobile responsiveness, blog formatting, and contact form integrations." },
+          { title: "Lead Magnet & Opt-in Pages", desc: "Designing high-converting squeeze pages linked with email automation workflows." },
+          { title: "Domain & Hosting Maintenance", desc: "Managing Bluehost, GoDaddy, and DNS records with quick technical troubleshooting." }
+        ]
+      },
+      smm: {
+        title: "Social Media & Content Operations",
+        badge: "Repurposing & Community",
+        summary: "Turning raw long-form videos into a consistent stream of short-form reels, graphics, and social posts across platforms.",
+        features: [
+          { title: "Reel & Short-Form Video Editing", desc: "Cutting engaging clips with captions, hooks, and clean audio using CapCut and Clipchamp." },
+          { title: "Branded Social Graphics", desc: "Designing eye-catching carousel slides, quotes, banners, and announcement flyers in Canva Pro." },
+          { title: "Publishing & Scheduling", desc: "Maintaining monthly content calendars using Meta Business Suite, Buffer, and native schedulers." },
+          { title: "YouTube & Podcast Management", desc: "Uploading episodes, creating clickable thumbnails, and optimizing SEO titles and descriptions." }
+        ]
+      },
+      realestate: {
+        title: "Real Estate Business Support",
+        badge: "Listing & Agent Assistance",
+        summary: "Supporting realtors, brokers, and property teams with marketing collaterals, listing assets, and lead tracking.",
+        features: [
+          { title: "Listing Flyers & Promo Packs", desc: "Creating sleek open-house brochures, just-listed graphics, and social promo materials." },
+          { title: "CRM & Buyer Follow-Ups", desc: "Logging incoming buyer inquiries, updating property pipelines, and sending follow-up emails." },
+          { title: "Webinar & Coaching Materials", desc: "Formatting slide decks, presentation playbooks, and workbooks for real estate coaching events." },
+          { title: "Market Research & Data Gathering", desc: "Compiling neighborhood stats, listing sheets, and comparable property notes." }
+        ]
+      },
+      sales: {
+        title: "Inside Sales, Retention & Outreach",
+        badge: "Revenue Support & Re-engagement",
+        summary: "Supporting sales cycles through proactive follow-ups, objection resolution, and reactivating dormant client accounts.",
+        features: [
+          { title: "Outbound Account Follow-ups", desc: "Contacting previously onboarded or dormant accounts to rekindle purchasing intent." },
+          { title: "Objection & Price Handling", desc: "Listening to client friction points, taking detailed notes, and proposing tailored re-engagement options." },
+          { title: "Pipeline & CRM Hygiene", desc: "Updating account notes, tagging qualified prospects, and handing warm leads over to executives." },
+          { title: "Order Recovery & Replacements", desc: "Resolving shipping or product concerns promptly to safeguard client loyalty and retention." }
+        ]
+      }
+    };
+
+    function renderRole(roleKey) {
+      const data = rolesData[roleKey];
+      const container = document.getElementById('roleDisplay');
+      container.innerHTML = `
+        <div class="role-content-header">
+          <div>
+            <h3 class="role-title">${data.title}</h3>
+            <span class="role-summary" style="display: block; margin-top: 6px; margin-bottom: 0;">${data.summary}</span>
+          </div>
+          <span class="role-badge">${data.badge}</span>
+        </div>
+        <div class="role-grid">
+          ${data.features.map(f => `
+            <div class="role-feature-item">
+              <div class="role-icon"><i class="fa-solid fa-check"></i></div>
+              <div>
+                <h4 class="role-feature-title">${f.title}</h4>
+                <p class="role-feature-desc">${f.desc}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    // Role Tab Switching
+    const roleButtons = document.querySelectorAll('.role-btn');
+    roleButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        roleButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderRole(btn.getAttribute('data-role'));
+      });
+    });
+
+    // Initial render
+    renderRole('receptionist');
+
+    // Toast Trigger on Email
+    const emailBtn = document.getElementById('emailCopyBtn');
+    const toast = document.getElementById('toast');
+
+    emailBtn.addEventListener('click', (e) => {
+      navigator.clipboard.writeText('chelelevate@gmail.com');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    });
+  </script>
+</body>
+</html>
